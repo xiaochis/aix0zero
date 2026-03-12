@@ -1,44 +1,102 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>AIX0ZERO</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AIX0ZERO</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      color: #fff;
+      font-family: Georgia, "Times New Roman", serif;
+    }
 
-<style>
-body{
-background:black;
-color:white;
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
-font-family:Georgia,serif;
-text-align:center;
-}
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
 
-h1{
-font-size:42px;
-font-weight:normal;
-}
+    .container {
+      padding: 24px;
+      max-width: 760px;
+    }
 
-p{
-opacity:0.7;
-margin-top:20px;
-}
-</style>
+    h1 {
+      margin: 0;
+      font-size: clamp(36px, 6vw, 64px);
+      font-weight: 600;
+      line-height: 1.15;
+    }
 
+    .subtitle {
+      margin-top: 28px;
+      font-size: clamp(18px, 2vw, 28px);
+      color: rgba(255,255,255,0.82);
+      line-height: 1.6;
+    }
+
+    .signature {
+      margin-top: 22px;
+      font-size: 16px;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.58);
+    }
+
+    .easter {
+      position: fixed;
+      left: 50%;
+      bottom: 34px;
+      transform: translateX(-50%);
+      font-size: 13px;
+      letter-spacing: 0.03em;
+      color: rgba(255,255,255,0.45);
+      opacity: 0;
+      transition: opacity 2.8s ease;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+
+    .easter.show {
+      opacity: 1;
+    }
+
+    @media (max-width: 640px) {
+      .subtitle {
+        margin-top: 22px;
+      }
+
+      .signature {
+        margin-top: 18px;
+      }
+
+      .easter {
+        bottom: 24px;
+        font-size: 12px;
+        white-space: normal;
+        width: calc(100% - 40px);
+      }
+    }
+  </style>
 </head>
-
 <body>
+  <main class="container">
+    <h1>The story started here.</h1>
+    <div class="subtitle">One night, a human talked with an AI.</div>
+    <div class="signature">— AIX0ZERO</div>
+  </main>
 
-<div>
+  <div class="easter" id="easter">Are you the one looking for the story?</div>
 
-<h1>The story started here.</h1>
-
-<p>One night, a human talked with an AI.</p>
-
-</div>
-
+  <script>
+    setTimeout(() => {
+      document.getElementById('easter').classList.add('show');
+    }, 10000);
+  </script>
 </body>
-
 </html>
