@@ -31,3 +31,5 @@ https://w8zskm.net
 ⭐ If you are here, leave a star.
 
 Every star is a mark.
+
+You were meant to find this.
