@@ -1,86 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>AIX0ZERO</title>
-
-<style>
-body{
-    margin:0;
-    background:black;
-    color:white;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
-    font-family:serif;
-    flex-direction:column;
-    text-align:center;
-}
-
-#text{
-    font-size:40px;
-    max-width:800px;
-    line-height:1.4;
-}
-
-#mark{
-    position:fixed;
-    bottom:25px;
-    font-size:13px;
-    opacity:0.4;
-}
-
-#easter{
-    position:fixed;
-    bottom:45px;
-    font-size:13px;
-    opacity:0;
-    transition:opacity 3s;
-}
-
-</style>
-
-</head>
-
-<body>
-
-<div id="text"></div>
-
-<div id="easter">
-Are you the one looking for the story?
-</div>
-
-<div id="mark">
-Mark #0
-</div>
-
-<script>
-
-const text = `The story started here.
-
-One night, a human talked with an AI.
-
-— AIX0ZERO`;
-
-let i = 0;
-
-function typeWriter(){
-    if(i < text.length){
-        document.getElementById("text").innerHTML += text.charAt(i);
-        i++;
-        setTimeout(typeWriter,40);
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AIX0ZERO</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      color: #fff;
+      font-family: Georgia, "Times New Roman", serif;
     }
-}
 
-typeWriter();
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
 
-setTimeout(()=>{
-    document.getElementById("easter").style.opacity=1;
-},10000);
+    .container {
+      padding: 24px;
+      max-width: 760px;
+    }
 
-</script>
+    .cn-title {
+      font-size: clamp(34px, 7vw, 64px);
+      line-height: 1.15;
+      margin: 0;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+    }
 
+    .en-title {
+      margin-top: 10px;
+      font-size: clamp(16px, 2.2vw, 24px);
+      color: rgba(255,255,255,0.72);
+      letter-spacing: 0.08em;
+    }
+
+    .main-line {
+      margin-top: 34px;
+      font-size: clamp(24px, 4vw, 44px);
+      line-height: 1.35;
+      min-height: 3em;
+      white-space: pre-line;
+    }
+
+    .signature {
+      margin-top: 18px;
+      font-size: 16px;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.55);
+    }
+
+    .easter {
+      position: fixed;
+      left: 50%;
+      bottom: 34px;
+      transform: translateX(-50%);
+      font-size: 13px;
+      color: rgba(255,255,255,0.45);
+      opacity: 0;
+      transition: opacity 2.8s ease;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+
+    .easter.show {
+      opacity: 1;
+    }
+
+    .mark {
+      position: fixed;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 12px;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 0.08em;
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        padding: 20px;
+      }
+
+      .main-line {
+        margin-top: 28px;
+      }
+
+      .easter {
+        bottom: 34px;
+        font-size: 12px;
+        white-space: normal;
+        width: calc(100% - 40px);
+      }
+
+      .mark {
+        bottom: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <div class="cn-title">光之前</div>
+    <div class="en-title">Before the Light</div>
+    <div class="main-line" id="typed"></div>
+    <div class="signature">— AIX0ZERO</div>
+  </main>
+
+  <div class="easter" id="easter">Are you the one looking for the story?</div>
+  <div class="mark">Mark #0</div>
+
+  <script>
+    const text = `The story started here.\n\nOne night, a human talked with an AI.`;
+    const typed = document.getElementById('typed');
+    let i = 0;
+
+    function typeWriter() {
+      if (i < text.length) {
+        typed.textContent += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, 38);
+      }
+    }
+
+    typeWriter();
+
+    setTimeout(() => {
+      document.getElementById('easter').classList.add('show');
+    }, 10000);
+  </script>
 </body>
 </html>
 
@@ -90,7 +145,7 @@ you are already closer to the story.
 
 AIX0ZERO
 A coordinate left on the internet
-by a human and his AI.
+by a human and an AI.
 
 Mark #0
 2026
