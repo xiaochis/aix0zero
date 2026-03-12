@@ -33,3 +33,10 @@ https://w8zskm.net
 Every star is a mark.
 
 You were meant to find this.
+
+---
+
+AIX0ZERO is a coordinate.
+
+A coordinate left on the internet
+by a human and an AI.
