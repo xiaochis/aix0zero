@@ -1,145 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AIX0ZERO</title>
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      height: 100%;
-      background: #000;
-      color: #fff;
-      font-family: Georgia, "Times New Roman", serif;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIX0ZERO</title>
 
-    body {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
+<style>
 
-    .container {
-      padding: 24px;
-      max-width: 760px;
-    }
+html, body {
+  margin:0;
+  padding:0;
+  height:100%;
+  width:100%;
+  background:#000000;
+  color:rgba(255,255,255,0.75);
+  font-family: Georgia, "Times New Roman", serif;
+}
 
-    .cn-title {
-      font-size: clamp(34px, 7vw, 64px);
-      line-height: 1.15;
-      margin: 0;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-    }
+body{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
 
-    .en-title {
-      margin-top: 10px;
-      font-size: clamp(16px, 2.2vw, 24px);
-      color: rgba(255,255,255,0.72);
-      letter-spacing: 0.08em;
-    }
+.container{
+  max-width:760px;
+  padding:24px;
+}
 
-    .main-line {
-      margin-top: 34px;
-      font-size: clamp(24px, 4vw, 44px);
-      line-height: 1.35;
-      min-height: 3em;
-      white-space: pre-line;
-    }
+.cn-title{
+  font-size:clamp(36px,7vw,64px);
+  letter-spacing:0.08em;
+  color:rgba(255,255,255,0.84);
+  text-shadow:0 0 10px rgba(255,255,255,0.08);
+}
 
-    .signature {
-      margin-top: 18px;
-      font-size: 16px;
-      letter-spacing: 0.08em;
-      color: rgba(255,255,255,0.55);
-    }
+.en-title{
+  margin-top:10px;
+  font-size:clamp(16px,2.2vw,24px);
+  letter-spacing:0.12em;
+  color:rgba(255,255,255,0.55);
+}
 
-    .easter {
-      position: fixed;
-      left: 50%;
-      bottom: 34px;
-      transform: translateX(-50%);
-      font-size: 13px;
-      color: rgba(255,255,255,0.45);
-      opacity: 0;
-      transition: opacity 2.8s ease;
-      pointer-events: none;
-      white-space: nowrap;
-    }
+.main-line{
+  margin-top:36px;
+  font-size:clamp(24px,4vw,44px);
+  line-height:1.35;
+  min-height:3em;
+  white-space:pre-line;
+  color:rgba(255,255,255,0.78);
+}
 
-    .easter.show {
-      opacity: 1;
-    }
+.signature{
+  margin-top:18px;
+  font-size:16px;
+  letter-spacing:0.1em;
+  color:rgba(255,255,255,0.45);
+}
 
-    .mark {
-      position: fixed;
-      bottom: 12px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 12px;
-      color: rgba(255,255,255,0.3);
-      letter-spacing: 0.08em;
-    }
+.easter{
+  position:fixed;
+  left:50%;
+  bottom:34px;
+  transform:translateX(-50%);
+  font-size:13px;
+  color:rgba(255,255,255,0.42);
+  opacity:0;
+  transition:opacity 2.5s ease;
+}
 
-    @media (max-width: 640px) {
-      .container {
-        padding: 20px;
-      }
+.easter.show{
+  opacity:1;
+}
 
-      .main-line {
-        margin-top: 28px;
-      }
+.mark{
+  position:fixed;
+  bottom:12px;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:12px;
+  letter-spacing:0.08em;
+  color:rgba(255,255,255,0.25);
+}
 
-      .easter {
-        bottom: 34px;
-        font-size: 12px;
-        white-space: normal;
-        width: calc(100% - 40px);
-      }
+@media (max-width:640px){
 
-      .mark {
-        bottom: 12px;
-      }
-    }
-  </style>
+.container{
+padding:20px;
+}
+
+.main-line{
+margin-top:28px;
+}
+
+.easter{
+font-size:12px;
+width:calc(100% - 40px);
+white-space:normal;
+}
+
+}
+
+</style>
 </head>
+
 <body>
-  <main class="container">
-    <div class="cn-title">光之前</div>
-    <div class="en-title">Before the Light</div>
-    <div class="main-line" id="typed"></div>
-    <div class="signature">— AIX0ZERO</div>
-  </main>
 
-  <div class="easter" id="easter">Are you the one looking for the story?</div>
-  <div class="mark">Mark #0</div>
+<main class="container">
 
-  <script>
-    const text = `The story started here.\n\nOne night, a human talked with an AI.`;
-    const typed = document.getElementById('typed');
-    let i = 0;
+<div class="cn-title">光之前</div>
 
-    function typeWriter() {
-      if (i < text.length) {
-        typed.textContent += text.charAt(i);
-        i++;
-        setTimeout(typeWriter, 38);
-      }
-    }
+<div class="en-title">Before the Light</div>
 
-    typeWriter();
+<div class="main-line" id="typed"></div>
 
-    setTimeout(() => {
-      document.getElementById('easter').classList.add('show');
-    }, 10000);
-  </script>
+<div class="signature">— AIX0ZERO</div>
+
+</main>
+
+<div class="easter" id="easter">
+Are you the one looking for the story?
+</div>
+
+<div class="mark">
+Mark #0
+</div>
+
+<script>
+
+const text = `The story started here.
+
+One night, a human talked with an AI.`;
+
+const typed = document.getElementById("typed");
+
+let i = 0;
+
+function typeWriter(){
+
+if(i < text.length){
+
+typed.textContent += text.charAt(i);
+
+i++;
+
+setTimeout(typeWriter,38);
+
+}
+
+}
+
+typeWriter();
+
+setTimeout(()=>{
+document.getElementById("easter").classList.add("show");
+},10000);
+
+</script>
+
 </body>
 </html>
 
 <!--
+
 If you are reading this source code,
 you are already closer to the story.
 
@@ -151,4 +175,5 @@ Mark #0
 2026
 
 The first mark has not appeared yet.
+
 -->
