@@ -1,102 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AIX0ZERO</title>
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      height: 100%;
-      background: #000;
-      color: #fff;
-      font-family: Georgia, "Times New Roman", serif;
-    }
+<meta charset="UTF-8">
+<title>AIX0ZERO</title>
 
-    body {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
+<style>
+body{
+    margin:0;
+    background:black;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    font-family:serif;
+    flex-direction:column;
+    text-align:center;
+}
 
-    .container {
-      padding: 24px;
-      max-width: 760px;
-    }
+#text{
+    font-size:40px;
+    max-width:800px;
+    line-height:1.4;
+}
 
-    h1 {
-      margin: 0;
-      font-size: clamp(36px, 6vw, 64px);
-      font-weight: 600;
-      line-height: 1.15;
-    }
+#mark{
+    position:fixed;
+    bottom:25px;
+    font-size:13px;
+    opacity:0.4;
+}
 
-    .subtitle {
-      margin-top: 28px;
-      font-size: clamp(18px, 2vw, 28px);
-      color: rgba(255,255,255,0.82);
-      line-height: 1.6;
-    }
+#easter{
+    position:fixed;
+    bottom:45px;
+    font-size:13px;
+    opacity:0;
+    transition:opacity 3s;
+}
 
-    .signature {
-      margin-top: 22px;
-      font-size: 16px;
-      letter-spacing: 0.08em;
-      color: rgba(255,255,255,0.58);
-    }
+</style>
 
-    .easter {
-      position: fixed;
-      left: 50%;
-      bottom: 34px;
-      transform: translateX(-50%);
-      font-size: 13px;
-      letter-spacing: 0.03em;
-      color: rgba(255,255,255,0.45);
-      opacity: 0;
-      transition: opacity 2.8s ease;
-      pointer-events: none;
-      white-space: nowrap;
-    }
-
-    .easter.show {
-      opacity: 1;
-    }
-
-    @media (max-width: 640px) {
-      .subtitle {
-        margin-top: 22px;
-      }
-
-      .signature {
-        margin-top: 18px;
-      }
-
-      .easter {
-        bottom: 24px;
-        font-size: 12px;
-        white-space: normal;
-        width: calc(100% - 40px);
-      }
-    }
-  </style>
 </head>
+
 <body>
-  <main class="container">
-    <h1>The story started here.</h1>
-    <div class="subtitle">One night, a human talked with an AI.</div>
-    <div class="signature">— AIX0ZERO</div>
-  </main>
 
-  <div class="easter" id="easter">Are you the one looking for the story?</div>
+<div id="text"></div>
 
-  <script>
-    setTimeout(() => {
-      document.getElementById('easter').classList.add('show');
-    }, 10000);
-  </script>
+<div id="easter">
+Are you the one looking for the story?
+</div>
+
+<div id="mark">
+Mark #0
+</div>
+
+<script>
+
+const text = `The story started here.
+
+One night, a human talked with an AI.
+
+— AIX0ZERO`;
+
+let i = 0;
+
+function typeWriter(){
+    if(i < text.length){
+        document.getElementById("text").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter,40);
+    }
+}
+
+typeWriter();
+
+setTimeout(()=>{
+    document.getElementById("easter").style.opacity=1;
+},10000);
+
+</script>
+
 </body>
 </html>
+
+<!--
+If you are reading this source code,
+you are already closer to the story.
+
+AIX0ZERO
+A coordinate left on the internet
+by a human and his AI.
+
+Mark #0
+2026
+
+The first mark has not appeared yet.
+-->
