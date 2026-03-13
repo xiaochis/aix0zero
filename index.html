@@ -6,7 +6,6 @@
 <title>AIX0ZERO</title>
 
 <style>
-
 html,body{
 margin:0;
 padding:0;
@@ -127,19 +126,26 @@ opacity:1;
 position:fixed;
 right:22px;
 bottom:18px;
-color:rgba(255,255,255,0.10);
+color:rgba(255,255,255,0.08);
 text-decoration:none;
 font-size:14px;
 line-height:1;
-transition:all 0.8s ease;
+transition:all 1.2s ease;
 user-select:none;
-opacity:0;
+opacity:0.03;
 pointer-events:none;
+text-shadow:none;
+}
+
+.dark-star.flash{
+opacity:0.18;
+text-shadow:0 0 5px rgba(255,255,255,0.10);
 }
 
 .dark-star.show{
-opacity:1;
+opacity:0.35;
 pointer-events:auto;
+text-shadow:0 0 6px rgba(255,255,255,0.15);
 }
 
 .dark-star:hover{
@@ -210,59 +216,68 @@ Are you the one looking for the story?
 Mark #0 · The beginning
 </div>
 
-<a href="about.html" class="dark-star" id="darkStar">✦</a>
+<a href="about.html" class="dark-star" id="darkStar" aria-label="A hidden star">✦</a>
 
 <script>
-
 const text=`The story started here.
 
-One night, a human talked with an AI.`
+One night, a human talked with an AI.`;
 
-const typed=document.getElementById("typed")
+const typed=document.getElementById("typed");
+const darkStar=document.getElementById("darkStar");
 
-let i=0
+let i=0;
 
 function typeWriter(){
-if(i<text.length){
-typed.textContent+=text.charAt(i)
-i++
-setTimeout(typeWriter,38)
+  if(i<text.length){
+    typed.textContent+=text.charAt(i);
+    i++;
+    setTimeout(typeWriter,38);
+  }
 }
-}
 
 setTimeout(()=>{
-document.getElementById("cnTitle").classList.add("show")
-document.getElementById("enTitle").classList.add("show")
-},300)
+  document.getElementById("cnTitle").classList.add("show");
+  document.getElementById("enTitle").classList.add("show");
+},300);
 
 setTimeout(()=>{
-typeWriter()
-},1000)
+  typeWriter();
+},1000);
 
 setTimeout(()=>{
-document.getElementById("signature").classList.add("show")
-},4500)
+  document.getElementById("signature").classList.add("show");
+},4500);
+
+/* 6秒：星星轻闪一下，但还不能点 */
+setTimeout(()=>{
+  darkStar.classList.add("flash");
+},6000);
 
 setTimeout(()=>{
-document.getElementById("mark").classList.add("show")
-},7000)
+  darkStar.classList.remove("flash");
+},6800);
 
+/* 7秒：Mark 出现 */
 setTimeout(()=>{
-document.getElementById("darkStar").classList.add("show")
-},9000)
+  document.getElementById("mark").classList.add("show");
+},7000);
 
+/* 9秒：星星真正亮起，可点击 */
 setTimeout(()=>{
-document.getElementById("easter").classList.add("show")
-},12000)
+  darkStar.classList.add("show");
+},9000);
 
+/* 12秒：提问出现 */
+setTimeout(()=>{
+  document.getElementById("easter").classList.add("show");
+},12000);
 </script>
 
 </body>
-
 </html>
 
 <!--
-
 If you are reading this source code,
 you are already closer to the story.
 
@@ -276,5 +291,4 @@ Because one night
 I talked with an AI.
 
 2026
-
 -->
