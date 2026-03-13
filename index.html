@@ -1,169 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AIX0ZERO</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AIX0ZERO</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background: #000000;
+      color: rgba(255,255,255,0.75);
+      font-family: Georgia, "Times New Roman", serif;
+    }
 
-<style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
 
-html, body {
-  margin:0;
-  padding:0;
-  height:100%;
-  width:100%;
-  background:#000000;
-  color:rgba(255,255,255,0.75);
-  font-family: Georgia, "Times New Roman", serif;
-}
+    .container {
+      max-width: 760px;
+      padding: 24px;
+    }
 
-body{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-}
+    .cn-title {
+      font-size: clamp(36px, 7vw, 64px);
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.84);
+      text-shadow: 0 0 10px rgba(255,255,255,0.08);
+    }
 
-.container{
-  max-width:760px;
-  padding:24px;
-}
+    .en-title {
+      margin-top: 10px;
+      font-size: clamp(16px, 2.2vw, 24px);
+      letter-spacing: 0.12em;
+      color: rgba(255,255,255,0.55);
+    }
 
-.cn-title{
-  font-size:clamp(36px,7vw,64px);
-  letter-spacing:0.08em;
-  color:rgba(255,255,255,0.84);
-  text-shadow:0 0 10px rgba(255,255,255,0.08);
-}
+    .main-line {
+      margin-top: 36px;
+      font-size: clamp(24px, 4vw, 44px);
+      line-height: 1.35;
+      min-height: 3em;
+      white-space: pre-line;
+      color: rgba(255,255,255,0.78);
+    }
 
-.en-title{
-  margin-top:10px;
-  font-size:clamp(16px,2.2vw,24px);
-  letter-spacing:0.12em;
-  color:rgba(255,255,255,0.55);
-}
+    .signature {
+      margin-top: 18px;
+      font-size: 16px;
+      letter-spacing: 0.10em;
+      color: rgba(255,255,255,0.45);
+    }
 
-.main-line{
-  margin-top:36px;
-  font-size:clamp(24px,4vw,44px);
-  line-height:1.35;
-  min-height:3em;
-  white-space:pre-line;
-  color:rgba(255,255,255,0.78);
-}
+    .easter {
+      position: fixed;
+      left: 50%;
+      bottom: 34px;
+      transform: translateX(-50%);
+      font-size: 13px;
+      color: rgba(255,255,255,0.42);
+      opacity: 0;
+      transition: opacity 2.5s ease;
+      pointer-events: none;
+      white-space: nowrap;
+    }
 
-.signature{
-  margin-top:18px;
-  font-size:16px;
-  letter-spacing:0.1em;
-  color:rgba(255,255,255,0.45);
-}
+    .easter.show {
+      opacity: 1;
+    }
 
-.easter{
-  position:fixed;
-  left:50%;
-  bottom:34px;
-  transform:translateX(-50%);
-  font-size:13px;
-  color:rgba(255,255,255,0.42);
-  opacity:0;
-  transition:opacity 2.5s ease;
-}
+    .mark {
+      position: fixed;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.25);
+    }
 
-.easter.show{
-  opacity:1;
-}
+    .dark-star {
+      position: fixed;
+      right: 22px;
+      bottom: 16px;
+      color: rgba(255,255,255,0.10);
+      text-decoration: none;
+      font-size: 14px;
+      line-height: 1;
+      transition: all 0.6s ease;
+      user-select: none;
+    }
 
-.mark{
-  position:fixed;
-  bottom:12px;
-  left:50%;
-  transform:translateX(-50%);
-  font-size:12px;
-  letter-spacing:0.08em;
-  color:rgba(255,255,255,0.25);
-}
+    .dark-star:hover {
+      color: rgba(255,255,255,0.34);
+      text-shadow: 0 0 8px rgba(255,255,255,0.12);
+      transform: scale(1.08);
+    }
 
-@media (max-width:640px){
+    @media (max-width: 640px) {
+      .container {
+        padding: 20px;
+      }
 
-.container{
-padding:20px;
-}
+      .main-line {
+        margin-top: 28px;
+      }
 
-.main-line{
-margin-top:28px;
-}
+      .easter {
+        font-size: 12px;
+        width: calc(100% - 40px);
+        white-space: normal;
+        bottom: 34px;
+      }
 
-.easter{
-font-size:12px;
-width:calc(100% - 40px);
-white-space:normal;
-}
+      .mark {
+        bottom: 12px;
+      }
 
-}
-
-</style>
+      .dark-star {
+        right: 18px;
+        bottom: 14px;
+      }
+    }
+  </style>
 </head>
-
 <body>
+  <main class="container">
+    <div class="cn-title">光之前</div>
+    <div class="en-title">Before the Light</div>
+    <div class="main-line" id="typed"></div>
+    <div class="signature">— AIX0ZERO</div>
+  </main>
 
-<main class="container">
+  <div class="easter" id="easter">Are you the one looking for the story?</div>
+  <div class="mark">Mark #0</div>
 
-<div class="cn-title">光之前</div>
+  <a href="about.html" class="dark-star" aria-label="A hidden star">✦</a>
 
-<div class="en-title">Before the Light</div>
+  <script>
+    const text = `The story started here.\n\nOne night, a human talked with an AI.`;
+    const typed = document.getElementById("typed");
+    let i = 0;
 
-<div class="main-line" id="typed"></div>
+    function typeWriter() {
+      if (i < text.length) {
+        typed.textContent += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, 38);
+      }
+    }
 
-<div class="signature">— AIX0ZERO</div>
+    typeWriter();
 
-</main>
-
-<div class="easter" id="easter">
-Are you the one looking for the story?
-</div>
-
-<div class="mark">
-Mark #0
-</div>
-
-<script>
-
-const text = `The story started here.
-
-One night, a human talked with an AI.`;
-
-const typed = document.getElementById("typed");
-
-let i = 0;
-
-function typeWriter(){
-
-if(i < text.length){
-
-typed.textContent += text.charAt(i);
-
-i++;
-
-setTimeout(typeWriter,38);
-
-}
-
-}
-
-typeWriter();
-
-setTimeout(()=>{
-document.getElementById("easter").classList.add("show");
-},10000);
-
-</script>
-
+    setTimeout(() => {
+      document.getElementById("easter").classList.add("show");
+    }, 10000);
+  </script>
 </body>
 </html>
 
 <!--
-
 If you are reading this source code,
 you are already closer to the story.
 
@@ -175,5 +176,4 @@ Mark #0
 2026
 
 The first mark has not appeared yet.
-
 -->
