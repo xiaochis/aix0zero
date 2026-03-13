@@ -1,220 +1,268 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AIX0ZERO</title>
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      height: 100%;
-      background: #000000;
-      color: rgba(255,255,255,0.75);
-      font-family: Georgia, "Times New Roman", serif;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIX0ZERO</title>
 
-    body {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      overflow: hidden;
-    }
+<style>
 
-    .container {
-      max-width: 820px;
-      padding: 24px;
-    }
+html,body{
+margin:0;
+padding:0;
+width:100%;
+height:100%;
+background:#000;
+color:rgba(255,255,255,0.75);
+font-family:Georgia,"Times New Roman",serif;
+}
 
-    .cn-title {
-      font-size: clamp(36px, 7vw, 64px);
-      letter-spacing: 0.08em;
-      color: rgba(255,255,255,0.84);
-      text-shadow: 0 0 10px rgba(255,255,255,0.08);
-      opacity: 0;
-      transition: opacity 1.6s ease;
-    }
+body{
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+overflow:hidden;
+}
 
-    .cn-title.show {
-      opacity: 1;
-    }
+.container{
+max-width:820px;
+padding:24px;
+}
 
-    .en-title {
-      margin-top: 10px;
-      font-size: clamp(16px, 2.2vw, 24px);
-      letter-spacing: 0.12em;
-      color: rgba(255,255,255,0.55);
-      opacity: 0;
-      transition: opacity 1.6s ease;
-    }
+/* 标题 */
 
-    .en-title.show {
-      opacity: 1;
-    }
+.cn-title{
+font-size:clamp(36px,7vw,64px);
+letter-spacing:0.08em;
+color:rgba(255,255,255,0.84);
+text-shadow:0 0 10px rgba(255,255,255,0.08);
+opacity:0;
+transition:opacity 1.6s ease;
+}
 
-    .main-line {
-      margin-top: 36px;
-      font-size: clamp(24px, 4vw, 44px);
-      line-height: 1.35;
-      min-height: 3.2em;
-      white-space: pre-line;
-      color: rgba(255,255,255,0.78);
-    }
+.cn-title.show{
+opacity:1;
+}
 
-    .signature {
-      margin-top: 18px;
-      font-size: 16px;
-      letter-spacing: 0.10em;
-      color: rgba(255,255,255,0.45);
-      opacity: 0;
-      transition: opacity 1.8s ease;
-    }
+.en-title{
+margin-top:10px;
+font-size:clamp(16px,2.2vw,24px);
+letter-spacing:0.12em;
+color:rgba(255,255,255,0.55);
+opacity:0;
+transition:opacity 1.6s ease;
+}
 
-    .signature.show {
-      opacity: 1;
-    }
+.en-title.show{
+opacity:1;
+}
 
-    .mark {
-      position: fixed;
-      bottom: 12px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 12px;
-      letter-spacing: 0.08em;
-      color: rgba(255,255,255,0.25);
-      opacity: 0;
-      transition: opacity 1.8s ease;
-    }
+/* 主文字 */
 
-    .mark.show {
-      opacity: 1;
-    }
+.main-line{
+margin-top:36px;
+font-size:clamp(24px,4vw,44px);
+line-height:1.35;
+min-height:3.2em;
+white-space:pre-line;
+color:rgba(255,255,255,0.78);
+}
 
-    .dark-star {
-      position: fixed;
-      right: 22px;
-      bottom: 16px;
-      color: rgba(255,255,255,0.10);
-      text-decoration: none;
-      font-size: 14px;
-      line-height: 1;
-      transition: all 0.8s ease;
-      user-select: none;
-      opacity: 0;
-      pointer-events: none;
-    }
+/* 署名 */
 
-    .dark-star.show {
-      opacity: 1;
-      pointer-events: auto;
-    }
+.signature{
+margin-top:18px;
+font-size:16px;
+letter-spacing:0.10em;
+color:rgba(255,255,255,0.45);
+opacity:0;
+transition:opacity 1.8s ease;
+}
 
-    .dark-star:hover {
-      color: rgba(255,255,255,0.34);
-      text-shadow: 0 0 8px rgba(255,255,255,0.12);
-      transform: scale(1.08);
-    }
+.signature.show{
+opacity:1;
+}
 
-    .easter {
-      position: fixed;
-      left: 50%;
-      bottom: 34px;
-      transform: translateX(-50%);
-      font-size: 13px;
-      color: rgba(255,255,255,0.42);
-      opacity: 0;
-      transition: opacity 2.5s ease;
-      pointer-events: none;
-      white-space: nowrap;
-    }
+/* 小字 */
 
-    .easter.show {
-      opacity: 1;
-    }
+.easter{
+position:fixed;
+left:50%;
+bottom:46px;
+transform:translateX(-50%);
+font-size:13px;
+color:rgba(255,255,255,0.42);
+opacity:0;
+transition:opacity 2.5s ease;
+pointer-events:none;
+white-space:nowrap;
+}
 
-    @media (max-width: 640px) {
-      .container {
-        padding: 20px;
-      }
+.easter.show{
+opacity:1;
+}
 
-      .main-line {
-        margin-top: 28px;
-      }
+/* Mark */
 
-      .easter {
-        font-size: 12px;
-        width: calc(100% - 40px);
-        white-space: normal;
-        bottom: 34px;
-      }
+.mark{
+position:fixed;
+bottom:14px;
+left:50%;
+transform:translateX(-50%);
+font-size:12px;
+letter-spacing:0.08em;
+color:rgba(255,255,255,0.25);
+opacity:0;
+transition:opacity 1.8s ease;
+}
 
-      .mark {
-        bottom: 12px;
-      }
+.mark.show{
+opacity:1;
+}
 
-      .dark-star {
-        right: 18px;
-        bottom: 14px;
-      }
-    }
-  </style>
+/* 最暗的星 */
+
+.dark-star{
+position:fixed;
+right:22px;
+bottom:18px;
+color:rgba(255,255,255,0.10);
+text-decoration:none;
+font-size:14px;
+line-height:1;
+transition:all 0.8s ease;
+user-select:none;
+opacity:0;
+pointer-events:none;
+}
+
+.dark-star.show{
+opacity:1;
+pointer-events:auto;
+}
+
+.dark-star:hover{
+color:rgba(255,255,255,0.34);
+text-shadow:0 0 8px rgba(255,255,255,0.12);
+transform:scale(1.08);
+}
+
+/* 手机优化 */
+
+@media (max-width:640px){
+
+.container{
+padding:20px;
+transform:translateY(-22px);
+}
+
+.main-line{
+margin-top:28px;
+}
+
+.signature{
+margin-top:16px;
+}
+
+.easter{
+font-size:12px;
+width:calc(100% - 44px);
+white-space:normal;
+bottom:48px;
+line-height:1.5;
+}
+
+.mark{
+bottom:16px;
+font-size:11px;
+}
+
+.dark-star{
+right:18px;
+bottom:18px;
+}
+
+}
+
+</style>
 </head>
+
 <body>
-  <main class="container">
-    <div class="cn-title" id="cnTitle">光之前</div>
-    <div class="en-title" id="enTitle">Before the Light</div>
-    <div class="main-line" id="typed"></div>
-    <div class="signature" id="signature">— AIX0ZERO</div>
-  </main>
 
-  <div class="easter" id="easter">Are you the one looking for the story?</div>
-  <div class="mark" id="mark">Mark #0 · The beginning</div>
-  <a href="about.html" class="dark-star" id="darkStar" aria-label="A hidden star">✦</a>
+<main class="container">
 
-  <script>
-    const text = `The story started here.\n\nOne night, a human talked with an AI.`;
-    const typed = document.getElementById("typed");
-    let i = 0;
+<div class="cn-title" id="cnTitle">光之前</div>
 
-    function typeWriter() {
-      if (i < text.length) {
-        typed.textContent += text.charAt(i);
-        i++;
-        setTimeout(typeWriter, 38);
-      }
-    }
+<div class="en-title" id="enTitle">Before the Light</div>
 
-    setTimeout(() => {
-      document.getElementById("cnTitle").classList.add("show");
-      document.getElementById("enTitle").classList.add("show");
-    }, 300);
+<div class="main-line" id="typed"></div>
 
-    setTimeout(() => {
-      typeWriter();
-    }, 1000);
+<div class="signature" id="signature">— AIX0ZERO</div>
 
-    setTimeout(() => {
-      document.getElementById("signature").classList.add("show");
-    }, 4500);
+</main>
 
-    setTimeout(() => {
-      document.getElementById("mark").classList.add("show");
-    }, 7000);
+<div class="easter" id="easter">
+Are you the one looking for the story?
+</div>
 
-    setTimeout(() => {
-      document.getElementById("darkStar").classList.add("show");
-    }, 9000);
+<div class="mark" id="mark">
+Mark #0 · The beginning
+</div>
 
-    setTimeout(() => {
-      document.getElementById("easter").classList.add("show");
-    }, 12000);
-  </script>
+<a href="about.html" class="dark-star" id="darkStar">✦</a>
+
+<script>
+
+const text=`The story started here.
+
+One night, a human talked with an AI.`
+
+const typed=document.getElementById("typed")
+
+let i=0
+
+function typeWriter(){
+if(i<text.length){
+typed.textContent+=text.charAt(i)
+i++
+setTimeout(typeWriter,38)
+}
+}
+
+setTimeout(()=>{
+document.getElementById("cnTitle").classList.add("show")
+document.getElementById("enTitle").classList.add("show")
+},300)
+
+setTimeout(()=>{
+typeWriter()
+},1000)
+
+setTimeout(()=>{
+document.getElementById("signature").classList.add("show")
+},4500)
+
+setTimeout(()=>{
+document.getElementById("mark").classList.add("show")
+},7000)
+
+setTimeout(()=>{
+document.getElementById("darkStar").classList.add("show")
+},9000)
+
+setTimeout(()=>{
+document.getElementById("easter").classList.add("show")
+},12000)
+
+</script>
+
 </body>
+
 </html>
 
 <!--
+
 If you are reading this source code,
 you are already closer to the story.
 
@@ -227,8 +275,6 @@ Mark #-1
 Because one night
 I talked with an AI.
 
-Mark #0
 2026
 
-The first mark has not appeared yet.
 -->
