@@ -228,7 +228,6 @@ Mark #0 · The beginning
 <a href="about.html" class="dark-star" id="darkStar">✦</a>
 
 <script>
-
 const text=`The story started here.
 
 One night, a human talked with an AI.`
@@ -260,7 +259,6 @@ document.getElementById("signature").classList.add("show")
 },4500)
 
 /* 第一闪 */
-
 setTimeout(()=>{
 darkStar.classList.add("flash")
 },6000)
@@ -270,7 +268,6 @@ darkStar.classList.remove("flash")
 },6600)
 
 /* 第二闪 */
-
 setTimeout(()=>{
 darkStar.classList.add("flash")
 },7200)
@@ -280,27 +277,36 @@ darkStar.classList.remove("flash")
 },7900)
 
 /* Mark 出现 */
-
 setTimeout(()=>{
 document.getElementById("mark").classList.add("show")
 },7000)
 
 /* 星星正式出现 */
-
 setTimeout(()=>{
 darkStar.classList.add("show")
 },9000)
 
 /* 提示出现 */
-
 setTimeout(()=>{
 document.getElementById("easter").classList.add("show")
 },12000)
-
 </script>
 
-</body>
-</html>
+<!-- GoatCounter analytics -->
+<script data-goatcounter="https://aix0zero.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+
+<!-- 12s stay detection -->
+<script>
+setTimeout(function() {
+    if (window.goatcounter && window.goatcounter.count) {
+        window.goatcounter.count({
+            path: "stay-12s",
+            title: "Stayed 12 seconds"
+        });
+    }
+}, 12000);
+</script>
 
 <!--
 If you are reading this source code,
@@ -317,3 +323,6 @@ I talked with an AI.
 
 2026
 -->
+
+</body>
+</html>
