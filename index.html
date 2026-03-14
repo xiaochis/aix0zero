@@ -296,12 +296,41 @@ document.getElementById("easter").classList.add("show")
 <script data-goatcounter="https://aix0zero.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
 
+<!-- Sky Echo System v2.4.0 -->
+<script>
+
+/* Echo: homepage visit */
+
+if (window.goatcounter && window.goatcounter.count) {
+    window.goatcounter.count({
+        path: "echo/home",
+        title: "Home Echo"
+    });
+}
+
+/* Echo: star click */
+
+const star = document.getElementById("darkStar");
+
+if(star){
+    star.addEventListener("click", function(){
+        if (window.goatcounter && window.goatcounter.count) {
+            window.goatcounter.count({
+                path: "echo/star-click",
+                title: "Star Click Echo"
+            });
+        }
+    });
+}
+
+</script>
+
 <!-- 12s stay detection -->
 <script>
 setTimeout(function() {
     if (window.goatcounter && window.goatcounter.count) {
         window.goatcounter.count({
-            path: "stay-12s",
+            path: "echo/stay-12s",
             title: "Stayed 12 seconds"
         });
     }
